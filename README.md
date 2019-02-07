@@ -1,3 +1,5 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/legalthings/lto-network-explorer?branch=master)](https://bettercodehub.com/)
+
 # LtoNetworkExplorer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
