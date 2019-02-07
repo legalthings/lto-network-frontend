@@ -1,0 +1,16 @@
+app-appbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+:host {
+  display: block;
+  padding-top: 64px;
+
+  @media screen and(max-width: 599px) {
+    top: 56px;
+  }
+}
