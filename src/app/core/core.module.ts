@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { EncoderService, LtoPublicNodeService } from './services';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [],
+  providers: [EncoderService.provider, LtoPublicNodeService.provider]
 })
-export class CoreModule { }
+export class CoreModule {}
