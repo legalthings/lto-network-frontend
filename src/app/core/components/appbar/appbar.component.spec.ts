@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppTestingModule } from '@app/_testing';
 
 import { AppbarComponent } from './appbar.component';
 
@@ -8,9 +9,9 @@ describe('AppbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppbarComponent ]
-    })
-    .compileComponents();
+      imports: [AppTestingModule],
+      declarations: [AppbarComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

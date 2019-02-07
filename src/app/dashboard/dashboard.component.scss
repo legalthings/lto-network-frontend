@@ -1,1 +1,14 @@
+.text-center {
+  text-align: center;
+}
 
+mat-card-content {
+  margin: 0 -16px;
+}
+
+
+.table-row:last-of-type {
+  td {
+    border-bottom: none;
+  }
+}

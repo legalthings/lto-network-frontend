@@ -95,7 +95,12 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/theme"
+              ]
+            }
           }
         },
         "lint": {
