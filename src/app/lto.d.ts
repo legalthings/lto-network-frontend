@@ -18,7 +18,7 @@ declare namespace LTO.API {
   export interface BlockHeader {
     version: number;
     timestamp: number;
-    referecen: string;
+    reference: string;
     features: string[];
     generator: string;
     signature: string;

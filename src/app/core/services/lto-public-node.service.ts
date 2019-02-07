@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken, Inject } from '@angular/core';
+import { Injectable, InjectionToken, Inject, ClassProvider } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,7 +9,7 @@ export const LTO_PUBLIC_NODE_HOST = new InjectionToken<string>('LTO_PUBLIC_NODE_
 
 @Injectable()
 // tslint:disable:no-use-before-declare
-export class LtoPublicNodeImpl implements LtoPublicNode {
+export class LtoPublicNodeServiceImpl implements LtoPublicNodeService {
   constructor(private _http: HttpClient, @Inject(LTO_PUBLIC_NODE_HOST) private _host: string) {}
 
   nodeVersion() {
@@ -23,9 +23,8 @@ export class LtoPublicNodeImpl implements LtoPublicNode {
   blockHeaders(height: number, count: number) {
     let from = height - count;
     from = from < 0 ? 0 : from; // On new/test node we can as more headers than generated
-    return this._http
-      .get<LTO.API.BlockHeader[]>(`${this._host}/blocks/headers/seq/${from}/height`)
-      .pipe(map(data => BlockHeader.fromJSON(data)));
+    const url = `${this._host}/blocks/headers/seq/${from}/${height}`;
+    return this._http.get<LTO.API.BlockHeader[]>(url).pipe(map(data => BlockHeader.fromJSON(data)));
   }
 
   block(height: number | string) {
@@ -59,7 +58,12 @@ export class LtoPublicNodeImpl implements LtoPublicNode {
   }
 }
 
-export abstract class LtoPublicNode {
+export abstract class LtoPublicNodeService {
+  static readonly provider: ClassProvider = {
+    provide: LtoPublicNodeService,
+    useClass: LtoPublicNodeServiceImpl
+  };
+
   abstract nodeVersion(): Observable<string>;
   abstract blocksHeight(): Observable<number>;
   abstract blockHeaders(height: number, count: number): Observable<BlockHeader[]>;

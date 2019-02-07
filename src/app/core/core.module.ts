@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { EncoderService } from './services';
+import { EncoderService, LtoPublicNodeService } from './services';
 
 @NgModule({
   declarations: [],
   imports: [],
-  providers: [EncoderService.provider]
+  providers: [EncoderService.provider, LtoPublicNodeService.provider]
 })
 export class CoreModule {}

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { EncoderServiceMock } from './mocks';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { EncoderServiceMock, LtoPublicNodeServiceMock } from './mocks';
 
 @NgModule({
-  exports: [RouterTestingModule],
-  providers: [EncoderServiceMock.provider]
+  exports: [RouterTestingModule, HttpClientTestingModule],
+  providers: [EncoderServiceMock.provider, LtoPublicNodeServiceMock.provider]
 })
 export class AppTestingModule {}
