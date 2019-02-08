@@ -42,11 +42,13 @@ declare namespace LTO.API {
     type: TransactionType;
     id: string;
     sender: string;
+    recipient?: string;
     senderPublicKey: string;
     fee: number;
     timestamp: number;
     proofs: string[];
     version: number;
+    amount?: number;
     anchors: string[];
   }
 }
