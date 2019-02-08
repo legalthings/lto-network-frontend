@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LtoPublicNodeService, BlockHeader } from '@app/core';
 import { Observable, of, timer } from 'rxjs';
-import { switchMap, switchMapTo } from 'rxjs/operators';
+import { switchMap, switchMapTo, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-last-blocks',
@@ -15,7 +15,8 @@ export class LastBlocksComponent implements OnInit {
   constructor(private _publicNode: LtoPublicNodeService) {
     this.lastBlocksHeaders$ = timer(0, 5000).pipe(
       switchMapTo(_publicNode.blocksHeight()),
-      switchMap(height => _publicNode.blockHeaders(height, 20))
+      switchMap(height => _publicNode.blockHeaders(height, 20)),
+      map(headers => headers.reverse())
     );
   }
 
