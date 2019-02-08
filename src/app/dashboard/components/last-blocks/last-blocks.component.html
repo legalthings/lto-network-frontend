@@ -12,7 +12,7 @@
 
         <ng-container matColumnDef="generator">
           <th mat-header-cell *matHeaderCellDef> Generator </th>
-          <td mat-cell *matCellDef="let header"> {{header.generator}} </td>
+          <td mat-cell *matCellDef="let header"> {{header.generator | short:8:true}} </td>
         </ng-container>
 
         <ng-container matColumnDef="size">

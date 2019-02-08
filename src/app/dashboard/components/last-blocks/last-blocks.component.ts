@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LtoPublicNodeService, BlockHeader } from '@app/core';
 import { Observable, of, timer } from 'rxjs';
 import { switchMap, switchMapTo, map } from 'rxjs/operators';
@@ -6,7 +6,8 @@ import { switchMap, switchMapTo, map } from 'rxjs/operators';
 @Component({
   selector: 'app-last-blocks',
   templateUrl: './last-blocks.component.html',
-  styleUrls: ['./last-blocks.component.scss']
+  styleUrls: ['./last-blocks.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LastBlocksComponent implements OnInit {
   lastBlocksHeaders$: Observable<BlockHeader[]>;

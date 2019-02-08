@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LtoPublicNodeService, Transaction } from '@app/core';
 import { Observable, timer, of } from 'rxjs';
 import { switchMapTo } from 'rxjs/operators';
@@ -6,7 +6,8 @@ import { switchMapTo } from 'rxjs/operators';
 @Component({
   selector: 'app-unconfirmed-transactions',
   templateUrl: './unconfirmed-transactions.component.html',
-  styleUrls: ['./unconfirmed-transactions.component.scss']
+  styleUrls: ['./unconfirmed-transactions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UnconfirmedTransactionsComponent implements OnInit {
   transactions$: Observable<Transaction[]>;

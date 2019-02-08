@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@app/shared';
-import { MatTableModule, MatGridListModule } from '@angular/material';
+import { MatTableModule } from '@angular/material';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -9,6 +9,6 @@ import { LastBlocksComponent } from './components/last-blocks/last-blocks.compon
 
 @NgModule({
   declarations: [DashboardComponent, UnconfirmedTransactionsComponent, LastBlocksComponent],
-  imports: [SharedModule, DashboardRoutingModule, MatTableModule, MatGridListModule]
+  imports: [SharedModule, DashboardRoutingModule, MatTableModule]
 })
 export class DashboardModule {}
