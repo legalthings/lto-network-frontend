@@ -1,14 +1,24 @@
-.text-center {
-  text-align: center;
-}
-
 mat-card-content {
   margin: 0 -16px;
+  overflow: auto;
 }
 
 
-.table-row:last-of-type {
-  td {
-    border-bottom: none;
+.card-container {
+  padding: 8px;
+  box-sizing: border-box;
+
+  mat-card {
+    width: 100%;
+    height: 100%;
+
+  }
+}
+
+app-content-section {
+  height: 100%;
+
+  mat-grid-list {
+    height: 100%;
   }
 }

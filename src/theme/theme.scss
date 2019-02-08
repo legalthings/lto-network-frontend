@@ -11,4 +11,5 @@ $lto-network-explorer-theme: mat-light-theme($primary-palette, $accent-palette, 
 
 mat-card.mat-card {
   border-radius: $border-radius;
+  box-sizing: border-box;
 }
