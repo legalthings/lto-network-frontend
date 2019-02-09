@@ -13,4 +13,5 @@ branches:
 script:
   - ng lint
   - ng test --browsers ChromeHeadless --watch false
-  - ng build --prod
+  - ng build --configuration testnet
+  - ng build --configuration mainnet
