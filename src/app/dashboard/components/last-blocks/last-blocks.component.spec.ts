@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppTestingModule } from '@app/_testing';
+import { MatTableModule } from '@angular/material';
 
 import { LastBlocksComponent } from './last-blocks.component';
 
@@ -8,9 +10,9 @@ describe('LastBlocksComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LastBlocksComponent ]
-    })
-    .compileComponents();
+      imports: [AppTestingModule, MatTableModule],
+      declarations: [LastBlocksComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
