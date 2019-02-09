@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run build:testnet",
+    "build:testnet": "ng build --configuration testnet",
+    "build:mainnet": "ng build --configuration mainnet",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
