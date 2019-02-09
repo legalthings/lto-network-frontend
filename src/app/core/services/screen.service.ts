@@ -21,6 +21,7 @@ export enum ScreenSize {
 }
 
 @Injectable()
+// tslint:disable:no-use-before-declare
 export class ScreenServiceImpl implements ScreenService {
   size$: Observable<ScreenSize>;
   mode$: Observable<ScreenMode>;
