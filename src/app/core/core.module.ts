@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
-import { EncoderService, LtoPublicNodeService } from './services';
+import { HttpClientModule } from '@angular/common/http';
+import { EncoderService, LtoPublicNodeService, ScreenService } from './services';
+
+import { AppbarModule } from './components/appbar/appbar.module';
 
 @NgModule({
   declarations: [],
-  imports: [],
-  providers: [EncoderService.provider, LtoPublicNodeService.provider]
+  imports: [HttpClientModule],
+  exports: [AppbarModule],
+  providers: [EncoderService.provider, LtoPublicNodeService.provider, ScreenService.provider]
 })
 export class CoreModule {}

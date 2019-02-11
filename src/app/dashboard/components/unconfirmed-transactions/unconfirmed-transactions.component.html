@@ -1,0 +1,17 @@
+<mat-card fxFlexFill>
+  <mat-card-title>Unconfirmed transactions</mat-card-title>
+  <ng-container [ngSuspense]="transactions$">
+    <app-http-error *ngSuspenseError="let error" [error]="error"></app-http-error>
+    <app-loading-spinner *ngSuspensePlaceholder="300"></app-loading-spinner>
+    <ng-container *ngSuspenseSuccess="let transactions">
+      <app-data-card-content *ngIf="transactions.length; else noTransactionsTpl">
+        <app-transactions-table [transactions]="transactions"></app-transactions-table>
+      </app-data-card-content>
+    </ng-container>
+  </ng-container>
+</mat-card>
+<ng-template #noTransactionsTpl>
+  <mat-card-content>
+    <p>All transactions confirmed</p>
+  </mat-card-content>
+</ng-template>
