@@ -13,11 +13,15 @@ export class LtoPublicNodeServiceImpl implements LtoPublicNodeService {
   constructor(private _http: HttpClient, @Inject(LTO_PUBLIC_NODE_HOST) private _host: string) {}
 
   nodeVersion() {
-    return this._http.get<LTO.API.Version>(`${this._host}/node/version`).pipe(map(data => data.version));
+    return this._http
+      .get<LTO.API.Version>(`${this._host}/node/version`)
+      .pipe(map(data => data.version));
   }
 
   blocksHeight() {
-    return this._http.get<LTO.API.BlockHeight>(`${this._host}/blocks/height`).pipe(map(data => data.height));
+    return this._http
+      .get<LTO.API.BlockHeight>(`${this._host}/blocks/height`)
+      .pipe(map(data => data.height));
   }
 
   blockHeaders(height: number, count: number) {
