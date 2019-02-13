@@ -1,3 +1,12 @@
-<p>
-  blocks-list works!
-</p>
+<app-content-section infinite-scroll (scrolled)="more()">
+  <mat-card>
+    <mat-card-title>Blocks</mat-card-title>
+    <ng-container [ngSuspense]="blocks$">
+      <app-http-error *ngSuspenseError="let error" [error]="error"></app-http-error>
+      <app-loading-spinner *ngSuspensePlaceholder="500"></app-loading-spinner>
+      <app-data-card-content *ngSuspenseSuccess="let blocks">
+        <app-blocks-table [blocks]="blocks"></app-blocks-table>
+      </app-data-card-content>
+    </ng-container>
+  </mat-card>
+</app-content-section>

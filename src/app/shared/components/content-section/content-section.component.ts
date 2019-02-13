@@ -10,7 +10,7 @@ import { Component, OnInit, Input, ElementRef, ChangeDetectionStrategy } from '@
       :host {
         display: block;
         margin: 0 auto;
-        padding: 16px 32px;
+        padding: 16px;
         width: 100%;
         box-sizing: border-box;
       }
