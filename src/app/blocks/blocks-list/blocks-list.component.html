@@ -1,4 +1,4 @@
-<app-content-section>
+<app-content-section infinite-scroll (scrolled)="more()">
   <mat-card>
     <mat-card-title>Blocks</mat-card-title>
     <ng-container [ngSuspense]="blocks$">
@@ -29,11 +29,7 @@
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="(visibleColumns$ | async); sticky: true"></tr>
-          <tr
-            mat-row
-            *matRowDef="let row; columns: (visibleColumns$ | async)"
-            class="table-row"
-          ></tr>
+          <tr mat-row *matRowDef="let row; columns: (visibleColumns$ | async)" class="table-row"></tr>
         </table>
       </app-data-card-content>
     </ng-container>

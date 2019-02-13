@@ -8,7 +8,6 @@ import { CoreModule } from './core/core.module';
 import { LTO_PUBLIC_NODE_HOST } from './core';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +16,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    ScrollingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
