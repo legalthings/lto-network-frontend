@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LtoPublicNodeService, BlockHeader } from '@app/core';
-import { Observable, of, timer } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { switchMap, switchMapTo, map } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +11,6 @@ import { switchMap, switchMapTo, map } from 'rxjs/operators';
 })
 export class LastBlocksComponent implements OnInit {
   lastBlocksHeaders$: Observable<BlockHeader[]>;
-  visibleColumns$: Observable<string[]> = of(['height', 'generator', 'size', 'transactionsCount']);
 
   constructor(private _publicNode: LtoPublicNodeService) {
     this.lastBlocksHeaders$ = timer(0, 5000).pipe(

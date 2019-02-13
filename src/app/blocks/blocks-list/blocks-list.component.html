@@ -5,35 +5,7 @@
       <app-http-error *ngSuspenseError="let error" [error]="error"></app-http-error>
       <app-loading-spinner *ngSuspensePlaceholder="500"></app-loading-spinner>
       <app-data-card-content *ngSuspenseSuccess="let blocks">
-        <table mat-table [dataSource]="headers" fxFlex="1 1 auto" *ngSuspenseSuccess="let headers">
-          <ng-container matColumnDef="height">
-            <th mat-header-cell *matHeaderCellDef>Height</th>
-            <td mat-cell *matCellDef="let header">
-              <a [routerLink]="['./', header.height]">{{ header.height }}</a>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="generator">
-            <th mat-header-cell *matHeaderCellDef>Generator</th>
-            <td mat-cell *matCellDef="let header"><a [routerLink]="['/', 'addresses', header.generator]">{{
-                header.generator | short: generatorLength : true }}</a></td>
-          </ng-container>
-
-          <ng-container matColumnDef="size">
-            <th mat-header-cell *matHeaderCellDef class="text-center">Block size</th>
-            <td mat-cell *matCellDef="let header" class="text-center">{{ header.blockSize }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="transactionsCount">
-            <th mat-header-cell *matHeaderCellDef class="text-center">Transactions</th>
-            <td mat-cell *matCellDef="let header" class="text-center">
-              {{ header.transactionsCount }}
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="visibleColumns; sticky: true"></tr>
-          <tr mat-row *matRowDef="let row; columns: visibleColumns" class="table-row"></tr>
-        </table>
+        <app-blocks-table [blocks]="blocks"></app-blocks-table>
       </app-data-card-content>
     </ng-container>
   </mat-card>

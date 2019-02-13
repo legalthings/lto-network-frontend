@@ -14,7 +14,7 @@ mat-card.mat-card {
   box-sizing: border-box;
 }
 
-a {
+a:not(.mat-button) {
   color: $link-color;
   text-decoration: none;
 

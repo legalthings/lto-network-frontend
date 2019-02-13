@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LtoPublicNodeService, BlockHeader, ScreenService, ScreenSize } from '@app/core';
-import { switchMap, exhaustMap, shareReplay, take, startWith, scan, map } from 'rxjs/operators';
-import { Subject, merge, Observable, of } from 'rxjs';
+import { LtoPublicNodeService, BlockHeader } from '@app/core';
+import { switchMap, exhaustMap, shareReplay, take, startWith, scan } from 'rxjs/operators';
+import { Subject, merge, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-blocks-list',
@@ -13,26 +13,7 @@ export class BlocksListComponent implements OnInit {
   height$ = new Subject<number>();
   blocks$: Observable<BlockHeader[]>;
 
-  get generatorLength(): number {
-    switch (this._screen.size) {
-      case ScreenSize.XS:
-      case ScreenSize.SM:
-        return 8;
-      case ScreenSize.MD:
-      case ScreenSize.LG:
-        return 18;
-      default:
-        return 40;
-    }
-  }
-
-  get visibleColumns(): string[] {
-    return this._screen.size <= ScreenSize.SM
-      ? ['height', 'generator', 'transactionsCount']
-      : ['height', 'generator', 'size', 'transactionsCount'];
-  }
-
-  constructor(private _publicNode: LtoPublicNodeService, private _screen: ScreenService) {
+  constructor(private _publicNode: LtoPublicNodeService) {
     const height$ = merge(_publicNode.blocksHeight(), this.height$).pipe(shareReplay(1));
 
     this.blocks$ = this.loadMore$.pipe(
