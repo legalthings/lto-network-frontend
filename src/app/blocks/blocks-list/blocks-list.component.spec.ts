@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppTestingModule } from '@app/_testing';
 
 import { BlocksListComponent } from './blocks-list.component';
 
@@ -8,9 +9,9 @@ describe('BlocksListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlocksListComponent ]
-    })
-    .compileComponents();
+      imports: [AppTestingModule],
+      declarations: [BlocksListComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

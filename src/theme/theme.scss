@@ -13,3 +13,12 @@ mat-card.mat-card {
   border-radius: $border-radius;
   box-sizing: border-box;
 }
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
