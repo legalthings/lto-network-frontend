@@ -25,7 +25,7 @@ declare namespace LTO.API {
     blocksize: number;
     transactionCount: number;
     height: number;
-    'nxt-consensus': {
+    'nxt-consensus'?: {
       'base-target': number;
       'generation-signature': string;
     };
