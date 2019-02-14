@@ -1,45 +1,4 @@
-<app-content-section>
-  <mat-card class="block-info" *ngIf="block$ | async as block">
-    <mat-card-title>Block details</mat-card-title>
-    <mat-card-content fxLayout="column" fxLayoutGap="16px">
-      <div class="item">
-        <div class="label">Version</div>
-        <div class="value">{{block.version}}</div>
-      </div>
-      <div class="item">
-        <div class="label">Timestamp</div>
-        <div class="value">{{block.timestamp | date: 'medium'}}</div>
-      </div>
-      <div class="item">
-        <div class="label">Transactions</div>
-        <div class="value">{{block.transactions.length}}</div>
-      </div>
-      <div class="item">
-        <div class="label">Parent block</div>
-        <div class="value">
-          <app-responsive-text xs="5" sm="8" [text]="block.parent"></app-responsive-text>
-        </div>
-      </div>
-      <div class="item">
-        <div class="label">Generator</div>
-        <div class="value"><a [routerLink]="['/', 'addresses', block.generator]">{{block.generator}}</a></div>
-      </div>
-      <div class="item">
-        <div class="label">Signature</div>
-        <div class="value">{{block.signature}}</div>
-      </div>
-      <div class="item">
-        <div class="label">Size</div>
-        <div class="value">{{block.size}}</div>
-      </div>
-      <div class="item" *ngIf="block.hasConsensus">
-        <div class="label">Base target</div>
-        <div class="value">{{block.baseTarget}}</div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</app-content-section>
-<!-- <app-content-section [ngSuspense]="block$">
+<app-content-section [ngSuspense]="block$">
   <app-http-error *ngSuspenseError="let error" [error]="error"></app-http-error>
   <app-loading-spinner *ngSuspensePlaceholder="500"></app-loading-spinner>
   <ng-container *ngSuspenseSuccess="let block">
@@ -61,7 +20,7 @@
         <div class="item">
           <div class="label">Parent block</div>
           <div class="value">
-            <app-responsive-text xs="5" sm="8" [text]="block.parent"></app-responsive-text>
+            <app-responsive-text xs="15" sm="30" double="true" [text]="block.parent"></app-responsive-text>
           </div>
         </div>
         <div class="item">
@@ -70,7 +29,9 @@
         </div>
         <div class="item">
           <div class="label">Signature</div>
-          <div class="value">{{block.signature}}</div>
+          <div class="value">
+            <app-responsive-text xs="15" sm="30" double="true" [text]="block.signature"></app-responsive-text>
+          </div>
         </div>
         <div class="item">
           <div class="label">Size</div>
@@ -83,4 +44,4 @@
       </mat-card-content>
     </mat-card>
   </ng-container>
-</app-content-section> -->
+</app-content-section>

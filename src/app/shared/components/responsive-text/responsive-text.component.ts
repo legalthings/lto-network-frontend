@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ScreenSize, ScreenService } from '@app/core';
-import { Observable, BehaviorSubject, Subject, combineLatest } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-responsive-text',
@@ -36,11 +36,6 @@ export class ResponsiveTextComponent implements OnInit {
   }
 
   @Input() double = false;
-  @Input() doubleXs = false;
-  @Input() doubleSM = false;
-  @Input() doubleMd = false;
-  @Input() doubleLg = false;
-  @Input() doubleXl = false;
 
   private _xs = 0;
   private _sm = 0;
@@ -62,8 +57,20 @@ export class ResponsiveTextComponent implements OnInit {
   ngOnInit() {}
 
   private _shortenString(value: string, screenSize: ScreenSize): string {
-    const sliceLength = this._getSliceLength(screenSize);
-    return value.slice(0, sliceLength) + '...';
+    const sliceSize = this._getSliceLength(screenSize);
+    const isDouble = this._isDouble(screenSize);
+
+    if (isDouble) {
+      if (value.length <= sliceSize * 2) {
+        return value;
+      }
+      return value.slice(0, sliceSize) + '...' + value.slice(-sliceSize);
+    }
+
+    if (sliceSize > value.length) {
+      return value;
+    }
+    return value.slice(0, sliceSize) + '...';
   }
 
   private _getSliceLength(screenSize: ScreenSize): number {
@@ -77,5 +84,7 @@ export class ResponsiveTextComponent implements OnInit {
     return Number.MAX_SAFE_INTEGER;
   }
 
-  // private _isDouble(screenSize: ScreenSize): boolean {}
+  private _isDouble(screenSize: ScreenSize): boolean {
+    return this.double;
+  }
 }

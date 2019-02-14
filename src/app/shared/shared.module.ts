@@ -12,8 +12,6 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
 import { ResponsiveTextComponent } from './components/responsive-text/responsive-text.component';
 
-import { ShortPipe } from './pipes/short/short.pipe';
-
 const sharedModules = [CommonModule, FlexLayoutModule, MaterialModule, NgSuspenseModule];
 const sharedComponents = [
   BlocksTableComponent,
@@ -26,7 +24,7 @@ const sharedComponents = [
   ResponsiveTextComponent
 ];
 
-const sharedPipes = [ShortPipe];
+const sharedPipes: any[] = [];
 
 @NgModule({
   declarations: [...sharedComponents, ...sharedPipes],
