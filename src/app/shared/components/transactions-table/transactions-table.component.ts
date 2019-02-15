@@ -10,7 +10,9 @@ import { map } from 'rxjs/operators';
 })
 export class TransactionsTableComponent implements OnInit {
   @Input()
-  transactionsType: TransactionType | null = null;
+  set transactionsType(type: TransactionType | null) {
+    this._type$.next(type);
+  }
 
   @Input()
   transactions!: Transaction[];
@@ -18,7 +20,7 @@ export class TransactionsTableComponent implements OnInit {
   columns$: Observable<string[]>;
   private _type$ = new BehaviorSubject<TransactionType | null>(null);
 
-  constructor(_screen: ScreenService) {
+  constructor(private _screen: ScreenService) {
     this.columns$ = combineLatest(_screen.size$, this._type$).pipe(
       map(([screenSize, transactionType]) => {
         if (screenSize === ScreenSize.XS) {
