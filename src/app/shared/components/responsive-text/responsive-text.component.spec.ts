@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppTestingModuleWithoutShared } from '@app/_testing';
 
 import { ResponsiveTextComponent } from './responsive-text.component';
 
@@ -8,9 +9,9 @@ describe('ResponsiveTextComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponsiveTextComponent ]
-    })
-    .compileComponents();
+      imports: [AppTestingModuleWithoutShared],
+      declarations: [ResponsiveTextComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

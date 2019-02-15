@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppTestingModuleWithoutShared } from '@app/_testing';
 import { MaterialModule } from '../../material.module';
-import { ShortPipe } from '../../pipes/short/short.pipe';
 import { BlocksTableComponent } from './blocks-table.component';
+import { ResponsiveTextComponent } from '../responsive-text/responsive-text.component';
 
 describe('BlocksTableComponent', () => {
   let component: BlocksTableComponent;
@@ -11,7 +11,7 @@ describe('BlocksTableComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppTestingModuleWithoutShared, MaterialModule],
-      declarations: [BlocksTableComponent, ShortPipe]
+      declarations: [BlocksTableComponent, ResponsiveTextComponent]
     }).compileComponents();
   }));
 
