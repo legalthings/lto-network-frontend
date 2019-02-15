@@ -1,11 +1,24 @@
+import { TransactionType } from './transaction-type';
+
 export class Transaction {
   static fromJSON(apiData: LTO.API.Transaction[]): Transaction[];
   static fromJSON(apiData: LTO.API.Transaction): Transaction;
-  static fromJSON(apiData: LTO.API.Transaction | LTO.API.Transaction[]): Transaction | Transaction[] {
+  static fromJSON(
+    apiData: LTO.API.Transaction | LTO.API.Transaction[]
+  ): Transaction | Transaction[] {
     if (Array.isArray(apiData)) {
       return apiData.map(transactionData => new Transaction(transactionData));
     }
     return new Transaction(apiData);
+  }
+
+  static group(transactions: Transaction[]): Map<TransactionType, Transaction[]> {
+    return transactions.reduce((group, transaction) => {
+      const transactionsOfType = group.get(transaction.type) || [];
+      group.set(transaction.type, [...transactionsOfType, transaction]);
+
+      return group;
+    }, new Map());
   }
 
   get timestamp() {
@@ -30,6 +43,10 @@ export class Transaction {
 
   get id() {
     return this._apiData.id;
+  }
+
+  get type(): TransactionType {
+    return this._apiData.type;
   }
 
   get leaseId(): string {

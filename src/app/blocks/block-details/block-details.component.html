@@ -43,5 +43,12 @@
         </div>
       </mat-card-content>
     </mat-card>
+    <h3 class="mat-h3">Transactions</h3>
+    <mat-card *ngFor="let transactionsGroup of block.groupedTransactions | keyvalue">
+      <mat-card-title>{{getTransactionName(transactionsGroup.key)}}</mat-card-title>
+      <app-data-card-content>
+        <app-transactions-table [transactionsType]="transactionsGroup.key" [transactions]="transactionsGroup.value"></app-transactions-table>
+      </app-data-card-content>
+    </mat-card>
   </ng-container>
 </app-content-section>

@@ -34,6 +34,10 @@ export class Block {
     return this._apiData['nxt-consensus'] ? this._apiData['nxt-consensus']['base-target'] : 0;
   }
 
+  get groupedTransactions() {
+    return Transaction.group(this.transactions);
+  }
+
   static fromJSON(data: LTO.API.Block[]): Block[];
   static fromJSON(data: LTO.API.Block): Block;
   static fromJSON(data: LTO.API.Block | LTO.API.Block[]): Block | Block[] {

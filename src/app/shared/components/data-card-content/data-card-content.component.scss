@@ -22,8 +22,8 @@
       }
     }
 
-    td:last-of-type,
-    th:last-of-type {
+    td:last-of-type:not(:first-of-type),
+    th:last-of-type:not(:first-of-type) {
       text-align: right;
     }
   }

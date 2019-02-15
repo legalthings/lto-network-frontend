@@ -36,7 +36,7 @@ declare namespace LTO.API {
     transactions: Transaction[];
   }
 
-  export type TransactionType = 4 | 15;
+  export type TransactionType = 4 | 8 | 9 | 11 | 12 | 15;
 
   export interface Transaction {
     type: TransactionType;

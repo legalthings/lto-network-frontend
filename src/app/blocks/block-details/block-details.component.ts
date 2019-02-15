@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LtoPublicNodeService, Block } from '@app/core';
+import { LtoPublicNodeService, Block, TransactionType } from '@app/core';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
@@ -20,4 +20,20 @@ export class BlockDetailsComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  getTransactionName(type: TransactionType): string {
+    switch (type) {
+      case TransactionType.TRANSFER:
+        return 'Transfer';
+      case TransactionType.LEASING:
+        return 'Lease';
+      case TransactionType.CANCEL_LEASING:
+        return 'Lease cancel';
+      case TransactionType.ANCHOR:
+      case TransactionType.ANCHOR_NEW:
+        return 'Anchors';
+    }
+
+    return '';
+  }
 }
