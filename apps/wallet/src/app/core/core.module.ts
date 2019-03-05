@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AuthService, LocalAccountsService } from './services';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  providers: [AuthService.provider, LocalAccountsService.provider]
 })
-export class CoreModule { }
+export class CoreModule {}
