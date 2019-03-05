@@ -98,7 +98,10 @@
             "karmaConfig": "apps/explorer/karma.conf.js",
             "styles": ["apps/explorer/src/styles.scss"],
             "scripts": [],
-            "assets": ["apps/explorer/src/favicon.ico", "apps/explorer/src/assets"]
+            "assets": ["apps/explorer/src/favicon.ico", "apps/explorer/src/assets"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["theme"]
+            }
           }
         },
         "lint": {
@@ -232,7 +235,10 @@
             "karmaConfig": "apps/wallet/karma.conf.js",
             "styles": ["apps/wallet/src/styles.scss"],
             "scripts": [],
-            "assets": ["apps/wallet/src/favicon.ico", "apps/wallet/src/assets"]
+            "assets": ["apps/wallet/src/favicon.ico", "apps/wallet/src/assets"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["theme"]
+            }
           }
         },
         "lint": {
