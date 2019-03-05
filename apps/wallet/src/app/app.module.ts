@@ -14,6 +14,11 @@ import { AppComponent } from './app.component';
       {
         path: 'auth',
         loadChildren: './auth/auth.module#AuthModule'
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'auth'
       }
     ])
   ],

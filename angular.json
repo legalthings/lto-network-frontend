@@ -24,7 +24,10 @@
             "tsConfig": "apps/explorer/tsconfig.app.json",
             "assets": ["apps/explorer/src/favicon.ico", "apps/explorer/src/assets"],
             "styles": ["apps/explorer/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["theme"]
+            }
           },
           "configurations": {
             "testnet": {
@@ -155,7 +158,10 @@
             "tsConfig": "apps/wallet/tsconfig.app.json",
             "assets": ["apps/wallet/src/favicon.ico", "apps/wallet/src/assets"],
             "styles": ["apps/wallet/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["theme"]
+            }
           },
           "configurations": {
             "production": {
