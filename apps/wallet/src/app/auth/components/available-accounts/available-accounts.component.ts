@@ -69,10 +69,4 @@ export class AvailableAccountsComponent implements OnInit, OnChanges, ControlVal
   registerOnTouched(cb: Function) {}
 
   writeValue(value: any) {}
-
-  private _asserInputs() {
-    if (!this.accounts || this.accounts.length) {
-      throw new Error('accounts cannot be undefined or empty');
-    }
-  }
 }

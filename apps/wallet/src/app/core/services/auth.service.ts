@@ -4,6 +4,7 @@ import { LocalUserAccount } from '../models';
 import { LtoService } from '@lto/core';
 import { Account } from 'lto-api';
 import { LocalAccountsService } from './local-accounts.service';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthServiceImpl implements AuthService {
@@ -11,6 +12,7 @@ export class AuthServiceImpl implements AuthService {
     null
   );
   activeLtoAccount$: BehaviorSubject<Account | null> = new BehaviorSubject<Account | null>(null);
+  authenticated$ = this.activeUserAccount$.pipe(map(account => !!account));
 
   constructor(private _lto: LtoService, private _localAccountsService: LocalAccountsService) {}
 
@@ -35,6 +37,7 @@ export abstract class AuthService {
 
   abstract activeUserAccount$: Observable<LocalUserAccount | null>;
   abstract activeLtoAccount$: Observable<Account | null>;
+  abstract authenticated$: Observable<boolean>;
 
   abstract login(account: LocalUserAccount, password: string): void;
   abstract logout(): void;
