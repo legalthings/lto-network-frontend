@@ -13,7 +13,8 @@ import {
   MatSelectModule,
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
-  MatSnackBarConfig
+  MatSnackBarConfig,
+  MatSidenavModule
 } from '@angular/material';
 import { ContentSectionModule } from '@lto/common';
 
@@ -32,7 +33,8 @@ import { ContentSectionModule } from '@lto/common';
     MatSelectModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    ContentSectionModule
+    ContentSectionModule,
+    MatSidenavModule
   ],
   providers: [
     {

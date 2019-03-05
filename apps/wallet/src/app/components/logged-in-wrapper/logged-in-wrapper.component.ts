@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface NavigationSection {
   label: string;
@@ -7,11 +7,11 @@ interface NavigationSection {
 }
 
 @Component({
-  selector: 'wallet-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'wallet-logged-in-wrapper',
+  templateUrl: './logged-in-wrapper.component.html',
+  styleUrls: ['./logged-in-wrapper.component.scss']
 })
-export class AppComponent {
+export class LoggedInWrapperComponent implements OnInit {
   navigationSections: NavigationSection[] = [
     {
       label: 'Transfers',
@@ -44,4 +44,8 @@ export class AppComponent {
       icon: 'settings'
     }
   ];
+
+  constructor() {}
+
+  ngOnInit() {}
 }
