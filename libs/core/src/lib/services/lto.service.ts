@@ -3,6 +3,7 @@ import { LTO, Account } from 'lto-api';
 import { LTO_NETWORK_BYTE } from '../tokens';
 
 @Injectable()
+// tslint:disable:no-use-before-declare
 export class LtoServiceImpl implements LtoService {
   private _lto: LTO;
 

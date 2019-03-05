@@ -7,6 +7,7 @@ import { LocalAccountsService } from './local-accounts.service';
 import { map } from 'rxjs/operators';
 
 @Injectable()
+// tslint:disable:no-use-before-declare
 export class AuthServiceImpl implements AuthService {
   activeUserAccount$: BehaviorSubject<LocalUserAccount | null> = new BehaviorSubject<LocalUserAccount | null>(
     null

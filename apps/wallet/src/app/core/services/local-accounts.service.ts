@@ -5,6 +5,7 @@ import { map, startWith, shareReplay } from 'rxjs/operators';
 import { Account } from 'lto-api';
 
 @Injectable()
+// tslint:disable:no-use-before-declare
 export class LocalAccountsServiceImpl implements LocalAccountsService {
   private _LS_KEY = '__LOCAL_ACCOUNTS__';
 
