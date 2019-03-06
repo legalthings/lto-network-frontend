@@ -1,17 +1,17 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { ImportAccountComponent } from './import-account.component';
 import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { SharedModule } from '../../shared';
 import { PasswordFormFieldModule } from '../components/password-form-field/password-form-field.module';
 import { LocalAccountsService, AuthService } from '../../core';
-import { LtoService } from '@lto/core';
+import { LtoService, LTO_NETWORK_BYTE } from '@lto/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
+import { CreateAccountComponent } from './create-account.component';
 
-describe('auth/ImportAccountComponent', () => {
-  let component: ImportAccountComponent;
-  let fixture: ComponentFixture<ImportAccountComponent>;
+describe('auth/CreateAccountComponent', () => {
+  let component: CreateAccountComponent;
+  let fixture: ComponentFixture<CreateAccountComponent>;
   let localAccounts: LocalAccountsService;
   let authService: AuthService;
   let ltoService: LtoService;
@@ -19,7 +19,7 @@ describe('auth/ImportAccountComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [SharedModule, PasswordFormFieldModule, NoopAnimationsModule],
-      declarations: [ImportAccountComponent],
+      declarations: [CreateAccountComponent],
       providers: [
         {
           provide: LocalAccountsService,
@@ -32,12 +32,13 @@ describe('auth/ImportAccountComponent', () => {
           useValue: {} as Partial<AuthService>
         },
         {
-          provide: LtoService,
-          useValue: {} as Partial<LtoService>
-        },
-        {
           provide: Router,
           useValue: {}
+        },
+        LtoService.provider,
+        {
+          provide: LTO_NETWORK_BYTE,
+          useValue: 'T'
         }
       ]
     }).compileComponents();
@@ -46,7 +47,7 @@ describe('auth/ImportAccountComponent', () => {
     authService = TestBed.get(AuthService);
     ltoService = TestBed.get(LtoService);
 
-    fixture = TestBed.createComponent(ImportAccountComponent);
+    fixture = TestBed.createComponent(CreateAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
