@@ -57,7 +57,7 @@ export class StatisticsComponent {
     const endDate = new Date();
     const startDate = new Date();
     if (granularity === Granularity.Last7Days) {
-      endDate.setDate(now.getDate() - 1);
+      endDate.setDate(now.getDate() - 2);
       startDate.setDate(endDate.getDate() - 7);
     } else {
       endDate.setHours(now.getHours() - 2);
