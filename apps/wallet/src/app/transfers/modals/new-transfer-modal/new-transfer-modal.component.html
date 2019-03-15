@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>New Transfer</h1>
+<mat-dialog-content>
+  <form [formGroup]="transferForm" fxLayout="column">
+    <mat-form-field>
+      <mat-label>Recipient</mat-label>
+      <input type="text" matInput formControlName="recipient" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Amount</mat-label>
+      <input type="number" matInput formControlName="amount" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Attachment</mat-label>
+      <input type="text" matInput formControlName="attachment">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fee</mat-label>
+      <input type="number" matInput formControlName="fee">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary">Transfer</button>
+</mat-dialog-actions>

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService, LocalAccountsService } from './services';
+import { AuthService, LocalAccountsService, FeeService } from './services';
 
 @NgModule({
   imports: [HttpClientModule],
   declarations: [],
-  providers: [AuthService.provider, LocalAccountsService.provider]
+  providers: [AuthService.provider, LocalAccountsService.provider, FeeService.provider]
 })
 export class CoreModule {}

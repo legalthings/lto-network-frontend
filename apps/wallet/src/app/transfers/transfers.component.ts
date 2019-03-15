@@ -3,6 +3,7 @@ import { TransactionsRepository, LtoAccount, Paginator, TransactionType } from '
 import { AuthService } from '../core';
 import { switchMap, filter, map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
+import { NewTransferModal } from './modals';
 
 @Component({
   selector: 'wallet-transfers',
@@ -19,7 +20,11 @@ export class TransfersComponent implements OnInit {
 
   dataProviders!: any[];
 
-  constructor(private _auth: AuthService, private _transactionsRepo: TransactionsRepository) {}
+  constructor(
+    private _auth: AuthService,
+    private _transactionsRepo: TransactionsRepository,
+    private _newTransfersModal: NewTransferModal
+  ) {}
 
   ngOnInit() {
     this.dataProviders = [TransactionType.TRANSFER, TransactionType.MASS_TRANSFER].map(type => {
@@ -43,5 +48,7 @@ export class TransfersComponent implements OnInit {
     });
   }
 
-  loadTransfers() {}
+  newTransfer() {
+    this._newTransfersModal.show();
+  }
 }

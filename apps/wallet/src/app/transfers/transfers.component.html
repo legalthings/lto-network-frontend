@@ -2,7 +2,7 @@
   <mat-card [ngSuspense]="provider.pageData$" *ngFor="let provider of dataProviders">
     <mat-card-title fxLayout="row" fxLayoutAlign="start center">
       <span fxFlex="1 1 auto">{{ provider.type | transactionLabel }}</span>
-      <button mat-flat-button color="primary" *ngIf="provider.type === TransactionType.TRANSFER">
+      <button mat-flat-button color="primary" *ngIf="provider.type === TransactionType.TRANSFER" (click)="newTransfer()">
         New transfer
       </button>
     </mat-card-title>
