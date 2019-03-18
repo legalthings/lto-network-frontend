@@ -21,6 +21,10 @@ mat-card.mat-card {
   box-sizing: border-box;
 }
 
+.mat-dialog-container.mat-dialog-container {
+  border-radius: $border-radius;
+}
+
 a:not(.mat-button) {
   color: $link-color;
   text-decoration: none;
