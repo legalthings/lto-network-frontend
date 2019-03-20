@@ -10,6 +10,14 @@ import { AuthGuard } from './core/guards';
 
 import { AppComponent } from './app.component';
 import { LoggedInWrapperComponent } from './components/logged-in-wrapper/logged-in-wrapper.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducer } from './+state/reducers';
+import { effects } from './+state/effects';
+import { NxModule } from '@nrwl/nx';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { storeFreeze } from 'ngrx-store-freeze';
 
 @NgModule({
   declarations: [AppComponent, LoggedInWrapperComponent],
@@ -42,7 +50,14 @@ import { LoggedInWrapperComponent } from './components/logged-in-wrapper/logged-
         pathMatch: 'full',
         redirectTo: 'auth'
       }
-    ])
+    ]),
+    NxModule.forRoot(),
+    StoreModule.forRoot(appReducer, {
+      metaReducers: !environment.production ? [storeFreeze] : []
+    }),
+    EffectsModule.forRoot(effects),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule
   ],
   providers: [
     {

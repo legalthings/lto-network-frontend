@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { LocalAccountsService, LocalUserAccount, AuthService } from '../../core';
 import { Observable } from 'rxjs';
+import { Login, DeleteAccount } from '../../+state/actions/auth';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'wallet-login',
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     private _localAccountsService: LocalAccountsService,
     private _authService: AuthService,
     private _router: Router,
-    private _matSnackbar: MatSnackBar
+    private _matSnackbar: MatSnackBar,
+    private _store: Store<any>
   ) {}
 
   ngOnInit() {
@@ -34,21 +37,16 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    try {
-      const { account, password } = this.loginForm.value;
-      this._authService.login(account, password);
-      this._matSnackbar.open('Logged in', 'Dismiss');
-      this._router.navigate(['/', 'transfers']);
-    } catch (error) {
-      this._matSnackbar.open('Invalid password', 'Dismiss');
-    }
+    const { account, password } = this.loginForm.value;
+    this._store.dispatch(new Login({ userAccount: account, password }));
   }
 
   deleteAccount(account: LocalUserAccount) {
-    const accountsLeft = this._localAccountsService.deleteLocalAccount(account);
-    this._matSnackbar.open('Account has been deleted', 'Dismiss');
-    if (accountsLeft === 0) {
-      this._router.navigate(['/', 'auth', 'create']);
-    }
+    this._store.dispatch(new DeleteAccount({ userAccount: account }));
+    // const accountsLeft = this._localAccountsService.deleteLocalAccount(account);
+    // this._matSnackbar.open('Account has been deleted', 'Dismiss');
+    // if (accountsLeft === 0) {
+    //   this._router.navigate(['/', 'auth', 'create']);
+    // }
   }
 }
