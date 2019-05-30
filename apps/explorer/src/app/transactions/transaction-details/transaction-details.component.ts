@@ -57,4 +57,8 @@ export class TransactionDetailsComponent {
 
     return false;
   }
+
+  showRecipient(transaction: Transaction): boolean {
+    return transaction.type === 4 || transaction.type === 7;
+  }
 }

@@ -44,6 +44,15 @@
           <lto-clipboard-button [text]="transaction.sender"></lto-clipboard-button>
         </div>
       </div>
+      <div class="item" *ngIf="showRecipient(transaction)">
+        <div class="label">Recipient</div>
+        <div class="value">
+          <a [routerLink]="['/', 'addresses', transaction.recipient]">
+            <lto-responsive-text xs="25" sm="50" [text]="transaction.recipient"></lto-responsive-text>
+          </a>
+          <lto-clipboard-button [text]="transaction.recipient"></lto-clipboard-button>
+        </div>
+      </div>
       <div class="item">
         <div class="label">Signature</div>
         <div class="value">
