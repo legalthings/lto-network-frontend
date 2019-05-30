@@ -23,10 +23,23 @@ export class BlocksTableComponent {
     }
   }
 
+  get dateFormat(): string {
+    switch (this._screen.size) {
+      case ScreenSize.XS:
+      case ScreenSize.SM:
+        return 'shortDate';
+      case ScreenSize.MD:
+      case ScreenSize.LG:
+        return 'short';
+      default:
+        return 'medium';
+    }
+  }
+
   get visibleColumns(): string[] {
     return this._screen.size <= ScreenSize.SM
       ? ['height', 'generator', 'transactionsCount']
-      : ['height', 'generator', 'size', 'transactionsCount'];
+      : ['height', 'generator', 'timestamp', 'transactionsCount'];
   }
 
   constructor(private _screen: ScreenService) {}
