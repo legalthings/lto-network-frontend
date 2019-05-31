@@ -9,6 +9,8 @@
 
 :host::ng-deep {
   .mat-table {
+    width: 100%;
+
     thead {
       tr.mat-header-row {
         height: 38px;
