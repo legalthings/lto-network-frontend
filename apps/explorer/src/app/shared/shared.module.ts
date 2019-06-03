@@ -22,6 +22,7 @@ import {
   MatMenuModule,
   MatSnackBarModule,
   MatPaginatorModule,
+  MatTooltipModule,
   MatDividerModule
 } from '@angular/material';
 import { LineChartModule } from '@swimlane/ngx-charts';
@@ -71,7 +72,8 @@ import { SearchComponent } from './components/search/search.component';
     TransactionsTableModule,
     MatPaginatorModule,
     ContentSectionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule {}
