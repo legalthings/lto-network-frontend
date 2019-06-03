@@ -17,8 +17,8 @@ export class BlockHeader {
     return this._apiData.generator;
   }
 
-  get blockSize() {
-    return this._apiData.blocksize;
+  get timestamp() {
+    return this._apiData.timestamp;
   }
 
   get transactionsCount() {
