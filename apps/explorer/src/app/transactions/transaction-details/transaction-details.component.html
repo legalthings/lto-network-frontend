@@ -64,6 +64,22 @@
         <div class="label">Amount</div>
         <div class="value">{{ transaction.amount | lto | number }}</div>
       </div>
+
+      <ng-container *ngIf="showAssocFields(transaction)">
+        <div class="item">
+          <div class="label">AssociationType</div>
+          <div class="value">{{ transaction.associationType | number }}</div>
+        </div>
+        <div class="item">
+          <div class="label">Party</div>
+          <div class="value">
+            <a [routerLink]="['/', 'addresses', transaction.party]">
+              <lto-responsive-text xs="25" sm="50" [text]="transaction.party"></lto-responsive-text>
+            </a>
+            <lto-clipboard-button [text]="transaction.party"></lto-clipboard-button>
+          </div>
+        </div>
+      </ng-container>
     </mat-card-content>
   </mat-card>
 
@@ -96,6 +112,12 @@
     </ng-container>
   </ng-container>
 
+  <ng-container *ngIf="showAssocHash(transaction)">
+
+    <ng-container *ngTemplateOutlet="assocTpl; context: { $implicit: transaction }">
+    </ng-container>
+  </ng-container>
+
   <ng-container *ngIf="transaction.type === TransactionType.MASS_TRANSFER">
     <ng-container
       *ngTemplateOutlet="transfersTpl; context: { $implicit: transaction }"
@@ -115,6 +137,34 @@
           sm="63"
           xs="33"
           [text]="anchor | encode: anchorsEncoding"
+        ></lto-responsive-text>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [matMenuTriggerFor]="encodingMenu">
+        {{ anchorsEncoding }} <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #encodingMenu="matMenu">
+        <button mat-menu-item (click)="setAnchorsEncoding(Encoding.hex)">hex</button>
+        <button mat-menu-item (click)="setAnchorsEncoding(Encoding.base58)">base58</button>
+        <button mat-menu-item (click)="setAnchorsEncoding(Encoding.base64)">base64</button>
+      </mat-menu>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>
+
+<ng-template #assocTpl let-transaction>
+  <mat-card>
+    <mat-card-title>Hash</mat-card-title>
+    <mat-card-content>
+      <div class="hash">
+        <lto-responsive-text
+          xl="117"
+          lg="117"
+          md="100"
+          sm="63"
+          xs="33"
+          [text]="transaction.hash | encode: anchorsEncoding"
         ></lto-responsive-text>
       </div>
     </mat-card-content>

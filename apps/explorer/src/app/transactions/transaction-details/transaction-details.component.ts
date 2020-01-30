@@ -58,6 +58,20 @@ export class TransactionDetailsComponent {
     return false;
   }
 
+  showAssocFields(transaction: Transaction): boolean {
+    switch (transaction.type) {
+      case TransactionType.INVOKE_ASSOCIATION:
+      case TransactionType.REVOKE_ASSOCIATION:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  showAssocHash(transaction: Transaction): boolean {
+    return (transaction.type === 16 || transaction.type === 17) && !!transaction.hash;
+  }
+
   showRecipient(transaction: Transaction): boolean {
     return transaction.type === 4 || transaction.type === 7;
   }
