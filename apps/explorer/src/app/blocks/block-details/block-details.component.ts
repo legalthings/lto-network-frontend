@@ -32,6 +32,10 @@ export class BlockDetailsComponent implements OnInit {
       case TransactionType.DATA:
       case TransactionType.ANCHOR:
         return 'Anchors';
+      case TransactionType.INVOKE_ASSOCIATION:
+        return 'Invoke association';
+      case TransactionType.REVOKE_ASSOCIATION:
+        return 'Revoke association';
     }
 
     return '';

@@ -19,6 +19,10 @@ export class TransactionLabelPipe implements PipeTransform {
         return 'Data';
       case TransactionType.ANCHOR:
         return 'Anchor';
+      case TransactionType.INVOKE_ASSOCIATION:
+        return 'Invoke association';
+      case TransactionType.REVOKE_ASSOCIATION:
+        return 'Revoke association';
     }
   }
 }

@@ -4,5 +4,7 @@ export enum TransactionType {
   CANCEL_LEASE = 9,
   MASS_TRANSFER = 11,
   DATA = 12,
-  ANCHOR = 15
+  ANCHOR = 15,
+  INVOKE_ASSOCIATION = 16,
+  REVOKE_ASSOCIATION = 17,
 }

@@ -61,6 +61,18 @@ export abstract class Transaction {
     return this._apiData.anchors || [];
   }
 
+  get hash(): string {
+    return this._apiData.hash || '';
+  }
+
+  get party(): string {
+    return this._apiData.party || '';
+  }
+
+  get associationType(): number {
+    return this._apiData.associationType || 0;
+  }
+
   protected constructor(protected _apiData: LTO.API.Transaction) {}
 
   /**
@@ -75,14 +87,14 @@ export abstract class Transaction {
 export class TransferTransaction extends Transaction {
   readonly type = TransactionType.TRANSFER;
   get signature(): string {
-    return this._apiData.signature || '';
+    return this._apiData.signature || this._apiData.proofs[0] || '';
   }
 }
 
 export class LeaseTransaction extends Transaction {
   readonly type = TransactionType.LEASE;
   get signature(): string {
-    return this._apiData.signature || '';
+    return this._apiData.signature || this._apiData.proofs[0] || '';
   }
 }
 
@@ -94,7 +106,7 @@ export class CancelLeaseTransaction extends Transaction {
   }
 
   get signature(): string {
-    return this._apiData.signature || '';
+    return this._apiData.signature || this._apiData.proofs[0] || '';
   }
 }
 
@@ -146,6 +158,46 @@ export class AnchorTransaction extends Transaction {
   }
 }
 
+export class InvokeAssociationTransaction extends Transaction {
+  readonly type = TransactionType.INVOKE_ASSOCIATION;
+
+  get hash(): string {
+    return this._apiData.hash || '';
+  }
+
+  get party(): string {
+    return this._apiData.party || '';
+  }
+
+  get associationType(): number {
+    return this._apiData.associationType || 0;
+  }
+
+  get signature(): string {
+    return this._apiData.proofs ? this._apiData.proofs[0] : '';
+  }
+}
+
+export class RevokeAssociationTransaction extends Transaction {
+  readonly type = TransactionType.REVOKE_ASSOCIATION;
+
+  get hash(): string {
+    return this._apiData.hash || '';
+  }
+
+  get party(): string {
+    return this._apiData.party || '';
+  }
+
+  get associationType(): number {
+    return this._apiData.associationType || 0;
+  }
+
+  get signature(): string {
+    return this._apiData.proofs ? this._apiData.proofs[0] : '';
+  }
+}
+
 function getConstructor(type: TransactionType) {
   switch (type) {
     case TransactionType.TRANSFER:
@@ -160,6 +212,10 @@ function getConstructor(type: TransactionType) {
       return DataTransaction;
     case TransactionType.ANCHOR:
       return AnchorTransaction;
+    case TransactionType.INVOKE_ASSOCIATION:
+      return InvokeAssociationTransaction;
+    case TransactionType.REVOKE_ASSOCIATION:
+      return RevokeAssociationTransaction;
     default:
       throw new Error(`Uncnown transaction type ${type}`);
   }

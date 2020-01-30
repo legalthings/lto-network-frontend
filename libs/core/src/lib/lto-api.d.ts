@@ -36,7 +36,7 @@ declare namespace LTO.API {
     transactions: Transaction[];
   }
 
-  export type TransactionType = 4 | 8 | 9 | 11 | 12 | 15;
+  export type TransactionType = 4 | 8 | 9 | 11 | 12 | 15 | 16 | 17;
 
   export interface Transaction {
     type: TransactionType;
@@ -54,6 +54,9 @@ declare namespace LTO.API {
     signature?: string;
     transfers?: Array<{ recipient: string; amount: number }>;
     lease?: Transaction;
+    hash?: string;
+    associationType?: number;
+    party?: string;
   }
 
   export interface Stats {
