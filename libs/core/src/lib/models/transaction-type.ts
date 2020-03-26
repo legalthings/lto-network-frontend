@@ -7,4 +7,6 @@ export enum TransactionType {
   ANCHOR = 15,
   INVOKE_ASSOCIATION = 16,
   REVOKE_ASSOCIATION = 17,
+  SPONSOR = 18,
+  CANCEL_SPONSOR = 19,
 }

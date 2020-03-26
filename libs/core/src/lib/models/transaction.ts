@@ -198,6 +198,20 @@ export class RevokeAssociationTransaction extends Transaction {
   }
 }
 
+export class SponsorTransaction extends Transaction {
+  readonly type = TransactionType.SPONSOR;
+  get signature(): string {
+    return this._apiData.signature || this._apiData.proofs[0] || '';
+  }
+}
+
+export class CancelSponsorTransaction extends Transaction {
+  readonly type = TransactionType.CANCEL_SPONSOR;
+  get signature(): string {
+    return this._apiData.signature || this._apiData.proofs[0] || '';
+  }
+}
+
 function getConstructor(type: TransactionType) {
   switch (type) {
     case TransactionType.TRANSFER:
@@ -216,6 +230,10 @@ function getConstructor(type: TransactionType) {
       return InvokeAssociationTransaction;
     case TransactionType.REVOKE_ASSOCIATION:
       return RevokeAssociationTransaction;
+    case TransactionType.SPONSOR:
+      return SponsorTransaction;
+    case TransactionType.CANCEL_SPONSOR:
+      return CancelSponsorTransaction;
     default:
       throw new Error(`Uncnown transaction type ${type}`);
   }
