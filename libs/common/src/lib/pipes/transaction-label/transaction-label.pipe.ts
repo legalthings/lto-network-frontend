@@ -23,6 +23,10 @@ export class TransactionLabelPipe implements PipeTransform {
         return 'Invoke association';
       case TransactionType.REVOKE_ASSOCIATION:
         return 'Revoke association';
+      case TransactionType.SPONSOR:
+        return 'Sponsor';
+      case TransactionType.CANCEL_SPONSOR:
+        return 'Sponsor cancel';
     }
   }
 }

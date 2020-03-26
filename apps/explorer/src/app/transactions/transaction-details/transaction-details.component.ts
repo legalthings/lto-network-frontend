@@ -73,6 +73,6 @@ export class TransactionDetailsComponent {
   }
 
   showRecipient(transaction: Transaction): boolean {
-    return transaction.type === 4 || transaction.type === 7;
+    return transaction.type === 4 || transaction.type === 7 || transaction.type === 18 || transaction.type === 19;
   }
 }
